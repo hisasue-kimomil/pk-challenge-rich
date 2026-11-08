@@ -1,0 +1,370 @@
+@charset "UTF-8";
+/* ドット文字（Google Fonts の DotGothic16）。リッチ版で Claude が追加 */
+@import url("https://fonts.googleapis.com/css2?family=DotGothic16&display=swap");
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    font-weight: normal;
+}
+img {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: bottom;
+    background: transparent;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol,
+ul {
+    list-style: none;
+}
+blockquote,
+q {
+    quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: "";
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+a {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    text-decoration: none;
+}
+
+ins {
+    background-color: #ff9;
+    color: #000;
+    text-decoration: none;
+}
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.clearfix:before {
+    　　　　content: "";
+    display: block;
+    clear: both;
+}
+
+.clearfix {
+    display: block;
+}
+
+body {
+  line-height: 1.5;
+}
+
+.wrapper {
+  max-width: 560px;
+  margin: auto;
+  padding: 80px;
+}
+.heading-title {
+  margin-bottom: 40px;
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+}
+.result {
+  margin-bottom: 40px;
+}
+
+.result-img {
+  width: 160px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* ============================================================
+   ここから下は、リッチ版（課題2）で Claude が用意した見た目です
+   ブロック調のドット絵に合わせ、文字もドット文字にしています
+   ============================================================ */
+
+body {
+  font-family: "DotGothic16", sans-serif;
+  background-color: #2b2f33;
+}
+
+/* 画面全体の箱（勝ち負けで JavaScript から色を変える） */
+.wrapper {
+  max-width: 440px;
+  padding: 32px 24px 40px;
+  background-color: #f4efe1;
+  border: 4px solid #1f2a30;
+  margin-top: 24px;
+}
+
+.heading-title {
+  margin-bottom: 16px;
+  font-size: 32px;
+  letter-spacing: 4px;
+  text-shadow: 3px 3px 0 #c9c1a8;
+}
+
+/* 5本のマーク */
+.marks {
+  margin-bottom: 8px;
+}
+
+.marks img {
+  width: 36px;
+  margin: 0 3px;
+}
+
+/* ゴールの絵の区画。大きさを 400×280 に広げた */
+.field {
+  position: relative;
+  width: 400px;
+  height: 280px;
+  margin: 12px auto;
+  background-image: url(../images/field.svg);
+  border: 4px solid #1f2a30;
+  overflow: hidden;
+}
+
+/* 観客（上のはし） */
+.crowd {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 400px;
+}
+
+/* キーパー（区画いっぱいに重ねる絵） */
+.keeper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 400px;
+}
+
+/* ボール（キーパーより手前に出る） */
+.ball {
+  position: absolute;
+  width: 32px;
+  left: 184px;
+  top: 236px;
+}
+
+/* 漫画風の文字（効果音と歓声） */
+.sfx-shot,
+.sfx,
+.kansei {
+  position: absolute;
+  display: none;
+  white-space: nowrap;
+  -webkit-text-stroke: 2px #1f2a30;
+  paint-order: stroke fill;
+  text-shadow: 4px 4px 0 #1f2a30;
+  pointer-events: none;
+}
+
+/* 蹴った瞬間の音（ボールの横） */
+.sfx-shot {
+  left: 230px;
+  top: 222px;
+  font-size: 26px;
+  color: #ffffff;
+  transform: rotate(-8deg);
+}
+
+/* 結果の音（ゴールの真ん中に大きく） */
+.sfx {
+  left: 0;
+  width: 400px;
+  top: 100px;
+  text-align: center;
+  font-size: 48px;
+  color: #ffd23f;
+  transform: rotate(-6deg);
+}
+
+/* 観客の声（上のはし） */
+.kansei {
+  left: 0;
+  width: 400px;
+  top: 16px;
+  text-align: center;
+  font-size: 24px;
+  color: #ffffff;
+}
+
+/* 何通り目のシュートか */
+.ban-text {
+  font-size: 13px;
+  color: #5b6b75;
+}
+
+/* 蹴った方向・本数・結果の文字 */
+.kick-text {
+  font-size: 20px;
+}
+
+.score-text {
+  margin: 4px auto 0;
+  padding: 6px 12px;
+  border: 3px solid transparent;
+  font-size: 18px;
+}
+
+.result {
+  margin-bottom: 16px;
+}
+
+.result-text {
+  font-size: 20px;
+}
+
+/* 名言（勝ち負けが決まったときに出す） */
+.meigen {
+  display: none;
+  margin: 0 auto 16px;
+  padding: 10px 14px;
+  border: 3px solid #1f2a30;
+  background-color: #ffffff;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+/* 方向のボタン（ブロックのような四角いボタン） */
+.button-area button {
+  margin: 4px;
+  padding: 10px 14px;
+  border: 3px solid #1f2a30;
+  background-color: #ffffff;
+  box-shadow: 3px 3px 0 #1f2a30;
+  font-family: "DotGothic16", sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.button-area button:hover {
+  background-color: #fff3c4;
+}
+
+.button-area button:active {
+  box-shadow: none;
+  transform: translate(3px, 3px);
+}
+
+.button-area .reset-button {
+  background-color: #1f2a30;
+  color: #ffffff;
+}
